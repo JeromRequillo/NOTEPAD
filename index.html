@@ -220,22 +220,7 @@ body{
   content:attr(data-placeholder);
   color:var(--ink-muted);pointer-events:none;
 }
-.note-body img{
-  max-width:100%;max-height:200px;
-  border-radius:8px;display:block;margin:6px 0;object-fit:contain;
-}
 
-.paste-tip{
-  display:flex;align-items:center;gap:6px;
-  font-size:11px;color:var(--ink-muted);
-  margin-top:10px;
-  font-family:'DM Mono',monospace;
-}
-.paste-tip kbd{
-  background:var(--surface3);border:1px solid var(--border);
-  border-radius:4px;padding:1px 5px;font-size:10px;
-  font-family:'DM Mono',monospace;color:var(--ink-soft);
-}
 
 /* color picker */
 .color-picker{
@@ -508,6 +493,51 @@ body{
   color:var(--ink-muted);letter-spacing:0.5px;
   grid-column:1/-1;
 }
+
+/* ── CATEGORY PILLS ─────────────────────────────────────── */
+.cat-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.cat-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;border:1px solid var(--border);background:var(--surface2);color:var(--ink-soft);cursor:pointer;transition:all 180ms var(--ease);}
+.cat-pill:hover{border-color:var(--border-focus);color:var(--ink);}
+.cat-pill.active{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff;box-shadow:0 2px 10px rgba(139,92,246,0.35);}
+
+.filter-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 28px;border-bottom:1px solid var(--border);grid-column:1/-1;background:color-mix(in srgb,var(--surface) 60%,transparent);backdrop-filter:blur(12px);}
+.filter-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:1px;margin-right:4px;}
+.filter-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;border:1px solid var(--border);background:var(--surface2);color:var(--ink-soft);cursor:pointer;transition:all 180ms var(--ease);}
+.filter-pill:hover{border-color:var(--border-focus);color:var(--ink);}
+.filter-pill.active{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff;box-shadow:0 2px 8px rgba(139,92,246,0.3);}
+.note-cat-badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace;font-size:9px;font-weight:500;margin-left:4px;}
+
+/* ── CHECKLIST ───────────────────────────────────────────── */
+.mode-toggle{display:flex;gap:6px;margin-top:10px;}
+.mode-btn{flex:1;padding:7px;border-radius:8px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;border:1px solid var(--border);background:var(--surface2);color:var(--ink-soft);cursor:pointer;transition:all 180ms var(--ease);text-align:center;}
+.mode-btn:hover{border-color:var(--border-focus);color:var(--ink);}
+.mode-btn.active{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff;}
+.checklist-composer{display:none;flex-direction:column;gap:6px;margin-top:8px;}
+.checklist-composer.visible{display:flex;}
+.check-item-row{display:flex;align-items:center;gap:8px;}
+.check-item-row input[type=text]{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--ink);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color 180ms ease;}
+.check-item-row input[type=text]:focus{border-color:var(--border-focus);}
+.check-item-row input[type=text]::placeholder{color:var(--ink-muted);}
+.remove-item-btn{background:none;border:none;color:var(--ink-muted);cursor:pointer;font-size:14px;padding:4px;border-radius:6px;transition:color 150ms ease,background 150ms ease;}
+.remove-item-btn:hover{color:var(--pin);background:rgba(244,63,94,0.1);}
+.add-item-btn{background:none;border:1px dashed var(--border);border-radius:8px;padding:7px;color:var(--ink-muted);font-family:'DM Mono',monospace;font-size:11px;cursor:pointer;width:100%;text-align:center;transition:all 180ms ease;}
+.add-item-btn:hover{border-color:var(--border-focus);color:var(--accent);}
+.checklist-items{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.checklist-item{display:flex;align-items:center;gap:10px;font-size:14px;color:#E8E8F0;cursor:pointer;padding:4px 0;transition:opacity 200ms ease;}
+[data-theme="light"] .checklist-item{color:#1A1A2E;}
+.checklist-item.done{opacity:0.45;}
+.checklist-item.done .item-label{text-decoration:line-through;}
+.item-check{width:18px;height:18px;border-radius:5px;flex-shrink:0;border:2px solid var(--border-focus);display:flex;align-items:center;justify-content:center;transition:all 200ms var(--ease);background:transparent;}
+.checklist-item.done .item-check{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;}
+.item-check-icon{color:#fff;font-size:10px;font-weight:700;opacity:0;transition:opacity 150ms ease;}
+.checklist-item.done .item-check-icon{opacity:1;}
+.checklist-progress{height:3px;border-radius:2px;background:var(--surface3);margin-bottom:10px;overflow:hidden;}
+.checklist-progress-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 400ms var(--ease);}
+
+/* ── NOTIF BELL ──────────────────────────────────────────── */
+.notif-btn{position:relative;}
+.notif-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--pin);border:1.5px solid var(--surface);display:none;}
+.notif-dot.show{display:block;}
 </style>
 </head>
 <body>
@@ -533,11 +563,20 @@ body{
         <input type="text" id="searchInput" placeholder="Maghanap...">
       </div>
       <span class="note-count-badge" id="countBadge">0 notes</span>
+      <button class="icon-pill notif-btn" id="notifBtn" title="Toggle notifications"><span>🔔</span><span class="notif-dot" id="notifDot"></span></button>
       <button class="icon-pill" id="themeBtn" title="Toggle theme">
         <span class="icon-sun">☀</span><span class="icon-moon" style="display:none">☾</span>
       </button>
     </div>
   </header>
+
+  <!-- FILTER ROW -->
+  <div class="filter-row" id="filterRow">
+    <span class="filter-label">Filter</span>
+    <button class="filter-pill active" data-filter="all">All</button>
+    <button class="filter-pill" data-filter="note">📝 Note</button>
+    <button class="filter-pill" data-filter="checklist">✅ Checklist</button>
+  </div>
 
   <!-- SIDEBAR / COMPOSER -->
   <aside class="sidebar">
@@ -546,15 +585,30 @@ body{
       <div class="composer">
         <input class="author-field" type="text" id="authorInput" placeholder="Your name (optional)" maxlength="40">
         <div class="note-body" id="noteBody" contenteditable="true" data-placeholder="Write your note here..."></div>
-        <div class="paste-tip">
-          <kbd>Ctrl</kbd>+<kbd>V</kbd> to paste an image
-        </div>
         <div style="margin-top:12px;">
           <p class="sidebar-label" style="margin-bottom:8px;">Color Tag</p>
           <div class="color-picker" id="colorPicker"></div>
         </div>
+        <!-- MODE TOGGLE -->
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="modeNote" onclick="setMode('note')">📝 Note</button>
+          <button class="mode-btn" id="modeCheck" onclick="setMode('checklist')">✅ Checklist</button>
+        </div>
+
+        <!-- CHECKLIST BUILDER -->
+        <div class="checklist-composer" id="checklistComposer">
+          <div id="checkItemsContainer"></div>
+          <button class="add-item-btn" id="addItemBtn">+ Add item</button>
+        </div>
+
+        <!-- CATEGORY -->
+        <div style="margin-top:12px;">
+          <p class="sidebar-label" style="margin-bottom:8px;">Category</p>
+          <div class="cat-row" id="catRow"></div>
+        </div>
+
         <div class="composer-footer">
-          <span class="char-count" id="charCount">0 / 1000</span>
+          <span class="char-count" id="charCount">0 chars</span>
           <button class="save-btn" id="saveBtn">
             <span id="saveLabel"><span class="icon">✦</span> Post Note</span>
           </button>
@@ -618,6 +672,17 @@ body{
   const countBadge  = document.getElementById('countBadge');
 
   let notes = [], selectedColor = 'none', searchTerm = '', editingId = null, justToggledPin = null;
+  let selectedCat = 'none', filterType = 'all', noteMode = 'note', notifEnabled = false, lastNoteCount = 0;
+
+  const CATEGORIES = {
+    none:    { name:'None',    hex:'transparent',   label:'—' },
+    urgent:  { name:'Urgent',  hex:'#F43F5E',       label:'🔴 Urgent' },
+    fyi:     { name:'FYI',     hex:'#06B6D4',       label:'🔵 FYI' },
+    meeting: { name:'Meeting', hex:'#F59E0B',       label:'🟡 Meeting' },
+    sales:   { name:'Sales',   hex:'#10B981',       label:'🟢 Sales' },
+    parts:   { name:'Parts',   hex:'#8B5CF6',       label:'🟣 Parts' },
+    other:   { name:'Other',   hex:'#7B7B96',       label:'⚪ Other' }
+  };
 
   // ── THEME ──
   let currentTheme = 'dark';
@@ -660,7 +725,7 @@ body{
     sw.style.background = key === 'none' ? 'var(--surface3)' : COLORS[key].hex;
     sw.style.animationDelay = (i * 40) + 'ms';
     sw.title = COLORS[key].name;
-    if(key === 'none') sw.innerHTML = '<span style="font-size:10px;display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-muted)">✕</span>';
+    if(key === 'none') sw.innerHTML = '<span style="font-size:10px;display:flex;align-items:center;justify-content:center;height:100%;color:var(--ink-muted)">\u2715</span>';
     sw.addEventListener('click', (e) => {
       selectedColor = key;
       colorPicker.querySelectorAll('.swatch').forEach(s => s.classList.toggle('active', s.title === COLORS[key].name));
@@ -669,60 +734,102 @@ body{
     colorPicker.appendChild(sw);
   });
 
-  // ── CHAR COUNT ──
-  noteBody.addEventListener('input', () => {
-    charCount.textContent = (noteBody.innerText||'').length + ' / 1000';
+  // ── CATEGORY PILLS ──
+  const catRow = document.getElementById('catRow');
+  Object.keys(CATEGORIES).forEach((key, i) => {
+    const pill = document.createElement('button');
+    pill.className = 'cat-pill' + (key === selectedCat ? ' active' : '');
+    pill.textContent = CATEGORIES[key].label;
+    pill.style.animationDelay = (i * 35) + 'ms';
+    pill.addEventListener('click', () => {
+      selectedCat = key;
+      catRow.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p === pill));
+    });
+    catRow.appendChild(pill);
   });
 
-  // ── IMAGE COMPRESS ──
-  function compressImage(dataUrl, maxSize, quality){
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => {
-        let w = img.width, h = img.height;
-        if(w > maxSize || h > maxSize){
-          if(w > h){ h = Math.round(h * maxSize / w); w = maxSize; }
-          else{ w = Math.round(w * maxSize / h); h = maxSize; }
-        }
-        const canvas = document.createElement('canvas');
-        canvas.width = w; canvas.height = h;
-        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-        let q = quality, result = canvas.toDataURL('image/jpeg', q);
-        while(result.length > 200000 && q > 0.05){ q -= 0.05; result = canvas.toDataURL('image/jpeg', Math.max(q, 0.05)); }
-        let scale = 1;
-        while(result.length > 200000 && scale > 0.1){
-          scale -= 0.1;
-          const c2 = document.createElement('canvas');
-          c2.width = Math.round(w * scale); c2.height = Math.round(h * scale);
-          c2.getContext('2d').drawImage(img, 0, 0, c2.width, c2.height);
-          result = c2.toDataURL('image/jpeg', 0.5);
-        }
-        resolve(result);
-      };
-      img.src = dataUrl;
+  // ── MODE TOGGLE ──
+  window.setMode = function(mode){
+    noteMode = mode;
+    document.getElementById('modeNote').classList.toggle('active', mode === 'note');
+    document.getElementById('modeCheck').classList.toggle('active', mode === 'checklist');
+    const cc = document.getElementById('checklistComposer');
+    cc.classList.toggle('visible', mode === 'checklist');
+    noteBody.style.display = mode === 'checklist' ? 'none' : '';
+    if(mode === 'checklist' && document.getElementById('checkItemsContainer').children.length === 0){
+      addCheckItem();
+    }
+  };
+
+  // ── CHECKLIST BUILDER ──
+  function addCheckItem(val){
+    const container = document.getElementById('checkItemsContainer');
+    const row = document.createElement('div');
+    row.className = 'check-item-row';
+    const inp = document.createElement('input');
+    inp.type = 'text'; inp.placeholder = 'Item...';
+    if(val) inp.value = val;
+    inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); addCheckItem(); } });
+    const del = document.createElement('button');
+    del.className = 'remove-item-btn'; del.textContent = '✕';
+    del.addEventListener('click', () => { row.remove(); });
+    row.appendChild(inp); row.appendChild(del);
+    container.appendChild(row);
+    inp.focus();
+  }
+  document.getElementById('addItemBtn').addEventListener('click', () => addCheckItem());
+
+  // ── FILTER ROW ──
+  document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterType = btn.dataset.filter;
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.toggle('active', b === btn));
+      render();
     });
+  });
+
+  // ── NOTIFICATIONS ──
+  const notifBtn = document.getElementById('notifBtn');
+  const notifDot = document.getElementById('notifDot');
+  notifBtn.addEventListener('click', async () => {
+    if(notifEnabled){
+      notifEnabled = false;
+      notifBtn.style.opacity = '0.5';
+      toast('Notifications off');
+      return;
+    }
+    if('Notification' in window){
+      const perm = await Notification.requestPermission();
+      if(perm === 'granted'){
+        notifEnabled = true;
+        notifBtn.style.opacity = '1';
+        lastNoteCount = notes.length;
+        toast('Notifications on! Maabisuhan ka kapag may bagong note.');
+      } else {
+        toast('Hindi pinayagan ang notifications.', true);
+      }
+    } else {
+      toast('Hindi supported ng browser mo.', true);
+    }
+  });
+
+  function triggerNotif(note){
+    if(!notifEnabled || document.hasFocus()) return;
+    const author = note.author || 'Someone';
+    const preview = note.type === 'checklist'
+      ? author + ' posted a checklist'
+      : author + ': ' + (note.text||'').slice(0, 60);
+    new Notification('Office Notepad — Bagong Note!', {
+      body: preview,
+      icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📝</text></svg>'
+    });
+    notifDot.classList.add('show');
+    setTimeout(() => notifDot.classList.remove('show'), 4000);
   }
 
-  // ── IMAGE PASTE ──
-  noteBody.addEventListener('paste', (e) => {
-    const items = (e.clipboardData || e.originalEvent.clipboardData).items;
-    for(const item of items){
-      if(item.type.indexOf('image') !== -1){
-        e.preventDefault();
-        const blob = item.getAsFile();
-        const reader = new FileReader();
-        reader.onload = async (ev) => {
-          toast('Kino-compress ang image...');
-          const compressed = await compressImage(ev.target.result, 800, 0.7);
-          const img = document.createElement('img');
-          img.src = compressed;
-          noteBody.appendChild(img);
-          toast('Na-paste ang image.');
-        };
-        reader.readAsDataURL(blob);
-        return;
-      }
-    }
+  // ── CHAR COUNT ──
+  noteBody.addEventListener('input', () => {
+    charCount.textContent = (noteBody.innerText||'').length + ' chars';
   });
 
   // ── SEARCH ──
@@ -753,6 +860,8 @@ body{
       (n.text||'').toLowerCase().includes(searchTerm) ||
       (n.author||'').toLowerCase().includes(searchTerm)
     );
+    if(filterType === 'note') visible = visible.filter(n => n.type !== 'checklist');
+    if(filterType === 'checklist') visible = visible.filter(n => n.type === 'checklist');
 
     const c = visible.length;
     countBadge.textContent = c + (c === 1 ? ' note' : ' notes');
@@ -773,14 +882,34 @@ body{
       const isEditing = editingId === n.id;
       const pinSpan = n.pinned ? '<span class="pin-badge' + (justToggledPin===n.id?' bounce':'') + '">📌 pinned</span>' : '';
 
+      const cat = CATEGORIES[n.category] || null;
+      const catBadge = (cat && n.category && n.category !== 'none')
+        ? '<span class="note-cat-badge" style="background:'+cat.hex+'22;color:'+cat.hex+';border:1px solid '+cat.hex+'44">'+cat.label+'</span>'
+        : '';
+
+      let noteContent = '';
+      if(n.type === 'checklist' && n.items && n.items.length){
+        const done = n.items.filter(it=>it.done).length;
+        const pct = Math.round(done/n.items.length*100);
+        noteContent = '<div class="checklist-progress"><div class="checklist-progress-bar" style="width:'+pct+'%"></div></div>' +
+          '<div class="checklist-items">' +
+          n.items.map((it,ii)=>'<div class="checklist-item'+(it.done?' done':'')+'" data-toggle="'+n.id+'" data-idx="'+ii+'">' +
+            '<div class="item-check"><span class="item-check-icon">\u2713</span></div>' +
+            '<span class="item-label">'+escHtml(it.text)+'</span>' +
+          '</div>').join('') +
+          '</div>';
+      } else {
+        noteContent = '<div class="note-text">'+(n.html ? n.html : escHtml(n.text))+'</div>';
+      }
+
       const body = isEditing
         ? '<textarea class="note-edit-area" id="editArea-'+n.id+'">'+escHtml(n.text)+'</textarea>' +
-          '<div class="note-footer"><button class="action-btn" data-cancel="'+n.id+'">✕ cancel</button><button class="action-btn" data-saveedit="'+n.id+'">✓ update</button></div>'
-        : '<div class="note-text">'+(n.html ? n.html : escHtml(n.text))+'</div>' +
+          '<div class="note-footer"><button class="action-btn" data-cancel="'+n.id+'">\u2715 cancel</button><button class="action-btn" data-saveedit="'+n.id+'">\u2713 update</button></div>'
+        : noteContent +
           '<div class="note-footer">' +
             '<button class="action-btn'+(n.pinned?' pin-on':'')+'" data-pin="'+n.id+'" title="Pin"><span class="btn-icon">📌</span>'+(n.pinned?'unpin':'pin')+'</button>' +
-            '<button class="action-btn" data-copy="'+n.id+'" title="Copy"><span class="btn-icon">⎘</span>copy</button>' +
-            '<button class="action-btn" data-edit="'+n.id+'" title="Edit"><span class="btn-icon">✎</span>edit</button>' +
+            '<button class="action-btn" data-copy="'+n.id+'" title="Copy"><span class="btn-icon">\u2398</span>copy</button>' +
+            '<button class="action-btn" data-edit="'+n.id+'" title="Edit"><span class="btn-icon">\u270e</span>edit</button>' +
             '<button class="action-btn danger" data-del="'+n.id+'" title="Delete"><span class="btn-icon">🗑</span>delete</button>' +
           '</div>';
 
@@ -789,7 +918,7 @@ body{
           '<div class="note-author-row">' +
             '<div class="note-avatar">'+initials(n.author||'Anonymous')+'</div>' +
             '<span class="note-author">'+author+'</span>' +
-            pinSpan +
+            pinSpan + catBadge +
           '</div>' +
           '<span class="note-time">'+fmtTime(n.ts)+'</span>' +
         '</div>' +
@@ -804,14 +933,22 @@ body{
     notesList.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',()=>{editingId=b.dataset.edit;render();}));
     notesList.querySelectorAll('[data-cancel]').forEach(b=>b.addEventListener('click',()=>{editingId=null;render();}));
     notesList.querySelectorAll('[data-saveedit]').forEach(b=>b.addEventListener('click',()=>saveEdit(b.dataset.saveedit)));
+    notesList.querySelectorAll('[data-toggle]').forEach(el=>el.addEventListener('click',()=>toggleCheckItem(el.dataset.toggle, parseInt(el.dataset.idx))));
   }
 
   // ── FIRESTORE LISTENER ──
   notesCol.onSnapshot(snap => {
+    const prev = notes.slice();
     notes = snap.docs.map(doc => {
       const d = doc.data();
-      return { id:doc.id, author:d.author||'', text:d.text||'', html:d.html||'', ts:d.ts||0, color:d.color||'none', pinned:!!d.pinned };
+      return { id:doc.id, author:d.author||'', text:d.text||'', html:d.html||'', ts:d.ts||0, color:d.color||'none', pinned:!!d.pinned, category:d.category||'none', type:d.type||'note', items:d.items||[] };
     });
+    // detect new notes for notification
+    if(prev.length > 0 && notes.length > prev.length){
+      const newNote = notes.find(n => !prev.find(p => p.id === n.id));
+      if(newNote) triggerNotif(newNote);
+    }
+    lastNoteCount = notes.length;
     render();
   }, () => toast('Hindi ma-konekta sa Firebase.', true));
 
@@ -819,22 +956,60 @@ body{
   async function saveNote(e){
     const text = (noteBody.innerText||'').trim();
     const html = noteBody.innerHTML.trim();
-    if(!text && !noteBody.querySelector('img')){ noteBody.focus(); return; }
+
+    // validate per mode
+    if(noteMode === 'note' && !text){ noteBody.focus(); return; }
+
     if(e) spawnRipple(saveBtn, e);
     saveBtn.disabled = true;
     saveLabel.innerHTML = '<span class="spin"></span> posting...';
     try{
-      await notesCol.add({ author:authorInput.value.trim(), text, html, ts:Date.now(), color:selectedColor, pinned:false });
+      let items = [];
+      let saveText = text;
+      if(noteMode === 'checklist'){
+        const inputs = document.querySelectorAll('#checkItemsContainer input[type=text]');
+        items = Array.from(inputs).map(i=>({text:i.value.trim(),done:false})).filter(i=>i.text);
+        if(!items.length){
+          toast('Magdagdag ng kahit isang item.', true);
+          saveBtn.disabled = false;
+          saveLabel.innerHTML = '<span class="icon">\u2736</span> Post Note';
+          return;
+        }
+        saveText = items.map(i => '- ' + i.text).join('\n');
+      }
+      await notesCol.add({
+        author: authorInput.value.trim(),
+        text: saveText,
+        html: noteMode === 'checklist' ? '' : html,
+        ts: Date.now(),
+        color: selectedColor,
+        pinned: false,
+        category: selectedCat,
+        type: noteMode,
+        items
+      });
+      if(noteMode === 'checklist'){
+        document.getElementById('checkItemsContainer').innerHTML = '';
+        addCheckItem();
+      }
       noteBody.innerHTML = '';
-      charCount.textContent = '0 / 1000';
-      saveLabel.innerHTML = '<span class="check-icon">✓</span> posted!';
+      charCount.textContent = '0 chars';
+      saveLabel.innerHTML = '<span class="check-icon">\u2713</span> posted!';
       toast('Note posted!');
-      setTimeout(()=>{ saveLabel.innerHTML = '<span class="icon">✦</span> Post Note'; }, 1200);
+      setTimeout(()=>{ saveLabel.innerHTML = '<span class="icon">\u2736</span> Post Note'; }, 1200);
     }catch(err){
-      saveLabel.innerHTML = '<span class="icon">✦</span> Post Note';
+      saveLabel.innerHTML = '<span class="icon">\u2736</span> Post Note';
       toast('Hindi na-save. Check connection.', true);
     }
     saveBtn.disabled = false;
+  }
+
+  // ── TOGGLE CHECKLIST ITEM ──
+  async function toggleCheckItem(id, idx){
+    const n = notes.find(x=>x.id===id); if(!n||!n.items) return;
+    const items = n.items.map((it,i)=> i===idx ? {...it,done:!it.done} : it);
+    try{ await notesCol.doc(id).update({items}); }
+    catch(e){ toast('Hindi na-update.',true); }
   }
 
   // ── DELETE ──
