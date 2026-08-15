@@ -685,7 +685,7 @@ body{
   };
 
   // ── THEME ──
-  let currentTheme = 'dark';
+  let currentTheme = 'light';
   function applyTheme(mode){
     document.documentElement.setAttribute('data-theme', mode);
     themeBtn.querySelector('.icon-sun').style.display = mode === 'light' ? 'inline' : 'none';
@@ -899,7 +899,7 @@ body{
           '</div>').join('') +
           '</div>';
       } else {
-        noteContent = '<div class="note-text">'+(n.html ? n.html : escHtml(n.text))+'</div>';
+        noteContent = '<div class="note-text">'+escHtml(n.text)+'</div>';
       }
 
       const body = isEditing
@@ -980,7 +980,7 @@ body{
       await notesCol.add({
         author: authorInput.value.trim(),
         text: saveText,
-        html: noteMode === 'checklist' ? '' : html,
+        html: '',
         ts: Date.now(),
         color: selectedColor,
         pinned: false,
